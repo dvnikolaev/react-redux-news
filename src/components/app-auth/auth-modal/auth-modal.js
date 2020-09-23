@@ -5,7 +5,7 @@ import "./auth-modal.css";
 import Modal from "../../Modal/Modal";
 import { onLogin } from "../../../store/actions/auth";
 
-const AuthModal = ({ setIsOpen, onLogin }) => {
+const AuthModal = ({ setIsOpen, onLogin, errorAuth }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +15,13 @@ const AuthModal = ({ setIsOpen, onLogin }) => {
     if (username && password) {
       onLogin(username, password);
     }
+  };
+  const renderError = () => {
+    if (!errorAuth) {
+      return null;
+    }
+
+    return <span className="auth__error">{errorAuth}</span>;
   };
 
   return (
@@ -41,6 +48,7 @@ const AuthModal = ({ setIsOpen, onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        {renderError()}
         <button className="button form-auth__button button--success">
           Вход
         </button>
@@ -56,4 +64,10 @@ const AuthModal = ({ setIsOpen, onLogin }) => {
   );
 };
 
-export default connect(null, { onLogin })(AuthModal);
+const mapStateToProps = (state) => {
+  return {
+    errorAuth: state.auth.errorAuth,
+  };
+};
+
+export default connect(mapStateToProps, { onLogin })(AuthModal);
