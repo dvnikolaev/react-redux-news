@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <PageMain />
           </Route>
           <Route path="/news">
