@@ -2,6 +2,7 @@ import { LOGIN, LOGOUT } from "../actions/auth/types";
 
 const INITIAL_STATE = {
   isAuth: false,
+  username: '',
   users: [
     {
       login: 'пользователь',
@@ -19,7 +20,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case LOGIN:
-      return {...state, isAuth: true}
+      return {...state, isAuth: true, username: action.payload}
     case LOGOUT:
       return {...state, isAuth: false}
     default:
