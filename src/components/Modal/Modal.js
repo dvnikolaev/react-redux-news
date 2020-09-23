@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom';
 
 import './modal.css';
 
-const Modal = ({ children, isOpen }) => {
-  if (!isOpen) {
-    return null;
-  }
-  
+const Modal = ({ children, setIsOpen }) => {
   return ReactDOM.createPortal(
-    <div className="modal">
+    <div className="modal" onClick={() => setIsOpen(false)}>
       <div className="modal-body">
         { children }
       </div>
