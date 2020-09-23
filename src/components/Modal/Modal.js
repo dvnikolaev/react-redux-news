@@ -6,7 +6,7 @@ import './modal.css';
 const Modal = ({ children, setIsOpen }) => {
   return ReactDOM.createPortal(
     <div className="modal" onClick={() => setIsOpen(false)}>
-      <div className="modal-body">
+      <div className="modal-body" onClick={(e) => e.stopPropagation()}>
         { children }
       </div>
     </div>,
