@@ -20,3 +20,7 @@
 .form-auth__button {
   margin-top: 10px;
 }
+.auth__error {
+  color: red;
+  font-size: 14px;
+}
