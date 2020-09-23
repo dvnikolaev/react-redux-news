@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { onLogout } from "../../store/actions/auth";
 
 import "./app-auth.css";
 import AuthModal from "./auth-modal/auth-modal";
 
-const Auth = ({ isAuth }) => {
+const Auth = ({ isAuth, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const logout = () => {
+    setIsOpen(false);
+    onLogout();
+  }
+
   const renderAuthModal = () => {
-    if (!isOpen) {
+    if (!isOpen || isAuth) {
       return null;
     }
     return <AuthModal setIsOpen={setIsOpen} />;
@@ -16,7 +22,11 @@ const Auth = ({ isAuth }) => {
 
   const renderButtonAuth = () => {
     if (isAuth) {
-      return <button className="button button--error">Выйти</button>;
+      return (
+        <button className="button button--error" onClick={logout}>
+          Выйти
+        </button>
+      );
     }
     return (
       <button
@@ -31,7 +41,6 @@ const Auth = ({ isAuth }) => {
   return (
     <div className="auth">
       {renderButtonAuth()}
-      {`${isOpen}`}
       {renderAuthModal()}
     </div>
   );
@@ -43,4 +52,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps, { onLogout })(Auth);
