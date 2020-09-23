@@ -1,29 +1,37 @@
-import { LOGIN, LOGOUT } from "../actions/auth/types";
+import { LOGIN, LOGOUT, SET_ERROR_AUTH } from "../actions/auth/types";
 
 const INITIAL_STATE = {
   isAuth: false,
-  username: '',
+  username: "",
   users: [
     {
-      login: 'пользователь',
-      password: 'пользователь',
-      isAdmin: false
+      login: "пользователь",
+      password: "пользователь",
+      isAdmin: false,
     },
     {
-      login: 'админ',
-      password: 'админ',
-      isAdmin: true
-    }
-  ]
-}
+      login: "админ",
+      password: "админ",
+      isAdmin: true,
+    },
+  ],
+  errorAuth: "",
+};
 
 export default (state = INITIAL_STATE, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case LOGIN:
-      return {...state, isAuth: true, username: action.payload}
+      return {
+        ...state,
+        isAuth: action.isAuth,
+        username: action.username,
+        errorAuth: "",
+      };
     case LOGOUT:
-      return {...state, isAuth: false}
+      return { ...state, isAuth: false, username: "" };
+    case SET_ERROR_AUTH:
+      return { ...state, errorAuth: action.text };
     default:
       return state;
   }
-}
+};
