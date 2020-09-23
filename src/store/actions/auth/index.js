@@ -21,9 +21,7 @@ export const onLogin = (username, password) => {
   store.dispatch(setErrorAuth('Неправильный логин или пароль'));
 
   return {
-    type: LOGIN,
-    isAuth: false,
-    username: ''
+    type: ''
   }
 
 };
