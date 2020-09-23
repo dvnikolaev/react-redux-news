@@ -5,11 +5,13 @@ const INITIAL_STATE = {
   username: "",
   users: [
     {
+      id: 1,
       login: "пользователь",
       password: "пользователь",
       isAdmin: false,
     },
     {
+      id: 2,
       login: "админ",
       password: "админ",
       isAdmin: true,
