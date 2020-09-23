@@ -16,6 +16,9 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+  body {
+    padding-top: 0;
+  }
   #root {
     max-width: initial;
   }
