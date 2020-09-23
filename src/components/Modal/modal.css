@@ -11,7 +11,7 @@
   z-index: 1;
 }
 .modal-body {
-  width: 600px;
+  min-width: 300px;
   padding: 10px;
   background-color: white;
   border-radius: 5px;
