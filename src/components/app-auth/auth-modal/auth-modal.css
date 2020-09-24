@@ -20,6 +20,10 @@
 .form-auth__button {
   margin-top: 10px;
 }
+.form-auth__button-enter:disabled {
+  background: gray;
+  cursor: initial;
+}
 .auth__error {
   color: red;
   font-size: 14px;
