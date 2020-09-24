@@ -2,7 +2,11 @@ import { LOGIN, LOGOUT, SET_ERROR_AUTH } from "../actions/auth/types";
 
 const INITIAL_STATE = {
   isAuth: false,
-  username: "",
+  user: {
+    id: null,
+    username: '',
+    isAdmin: false
+  },
   users: [
     {
       id: 1,
@@ -26,11 +30,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isAuth: action.isAuth,
-        username: action.username,
+        user: action.user,
         errorAuth: "",
       };
     case LOGOUT:
-      return { ...state, isAuth: false, username: "" };
+      return { ...state, isAuth: false, user: action.user };
     case SET_ERROR_AUTH:
       return { ...state, errorAuth: action.text };
     default:
