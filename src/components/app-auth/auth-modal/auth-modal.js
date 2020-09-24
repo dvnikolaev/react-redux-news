@@ -49,7 +49,10 @@ const AuthModal = ({ setIsOpen, onLogin, errorAuth }) => {
           />
         </label>
         {renderError()}
-        <button className="button form-auth__button button--success">
+        <button
+          className="button form-auth__button form-auth__button-enter button--success"
+          disabled={!username || !password}
+        >
           Вход
         </button>
         <button
