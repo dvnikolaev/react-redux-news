@@ -27,21 +27,21 @@ const AuthModal = ({ setIsOpen, onLogin, errorAuth }) => {
   return (
     <Modal setIsOpen={setIsOpen}>
       <h2 className="form__header">Вход в систему</h2>
-      <form className="form-auth" onSubmit={onSubmitForm}>
-        <label className="form-auth__label">
-          <span className="form-auth__text">Имя пользователя:</span>
+      <form className="form" onSubmit={onSubmitForm}>
+        <label className="form__label">
+          <span className="form__text">Имя пользователя:</span>
           <input
             name="username"
             type="text"
-            className="form-auth__input"
+            className="form__input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
-        <label className="form-auth__label">
-          <span className="form-auth__text">Пароль:</span>
+        <label className="form__label">
+          <span className="form__text">Пароль:</span>
           <input
-            className="form-auth__input"
+            className="form__input"
             name="password"
             type="password"
             value={password}
@@ -50,13 +50,13 @@ const AuthModal = ({ setIsOpen, onLogin, errorAuth }) => {
         </label>
         {renderError()}
         <button
-          className="button form-auth__button form-auth__button-enter button--success"
+          className="button form__button form__button-enter button--success"
           disabled={!username || !password}
         >
           Вход
         </button>
         <button
-          className="button form-auth__button button--error"
+          className="button form__button button--error"
           type="button"
           onClick={() => setIsOpen(false)}
         >
