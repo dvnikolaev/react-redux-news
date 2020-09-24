@@ -1,0 +1,13 @@
+.news-list__item {
+  background-color: white;
+  padding: 5px 10px 10px;
+}
+.news-list__item:not(:first-of-type) {
+  margin-top: 10px;
+}
+.news__title {
+  margin: 0;
+}
+.news__date {
+  color: rgba(0,0,0,.3);
+}
