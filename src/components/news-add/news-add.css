@@ -1,0 +1,12 @@
+.button--add-news {
+  display: block;
+  margin: 15px 0 0 auto;
+  background: #1867C0;
+}
+.button--add-news:hover,
+.button--add-news:focus {
+  background: #1a6ece
+}
+.button--add-news:active {
+  background: #1c7ae6
+}
