@@ -1,4 +1,4 @@
-import { ACCEPT_NEWS, ADD_NEWS } from "../actions/news/types";
+import { ACCEPT_NEWS, ADD_NEWS, DECLINE_NEWS } from "../actions/news/types";
 
 const INITIAL_STATE = {
   news: [
@@ -39,8 +39,8 @@ export default (state = INITIAL_STATE, action) => {
     case ACCEPT_NEWS: {
       return {
         ...state,
-        news: state.news.map((item, index) => {
-          if (index === action.id) {
+        news: state.news.map((item) => {
+          if (item.id === action.id) {
             return {
               ...item,
               isAccept: true,
@@ -49,6 +49,12 @@ export default (state = INITIAL_STATE, action) => {
           return item;
         }),
       };
+    }
+    case DECLINE_NEWS: {
+      return {
+        ...state,
+        news: state.news.filter(item => item.id !== action.id)
+      }
     }
     default:
       return { ...state };

@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { onAcceptNews } from "../../store/actions/news";
+import { onAcceptNews, onDeclineNews } from "../../store/actions/news";
 
-const NewsActions = ({ isAdmin, isAccept, newsId, onAcceptNews }) => {
+const NewsActions = ({ isAdmin, isAccept, newsId, onAcceptNews, onDeclineNews }) => {
   if (!isAdmin || isAccept) {
     return null;
   }
@@ -14,7 +14,10 @@ const NewsActions = ({ isAdmin, isAccept, newsId, onAcceptNews }) => {
       >
         Принять
       </button>
-      <button className="button news-actions__button button--error">
+      <button
+        className="button news-actions__button button--error"
+        onClick={() => onDeclineNews(newsId)}
+      >
         Отклонить
       </button>
     </div>
@@ -27,4 +30,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { onAcceptNews })(NewsActions);
+export default connect(mapStateToProps, { onAcceptNews, onDeclineNews })(NewsActions);
