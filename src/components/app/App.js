@@ -4,10 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./app.css";
 import Header from "../app-header/app-header";
 import Main from '../../pages/Main/page-main';
-
-const PageNews = () => {
-  return <h1>PAGE NEWS</h1>;
-};
+import PageNews from '../../pages/News/page-news'
 
 const App = () => {
   return (
