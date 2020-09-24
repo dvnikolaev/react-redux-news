@@ -1,8 +1,10 @@
 import React from 'react';
 
+import NewsList from '../../components/news-list/news-list';
+
 const PageNews = () => {
   return <div>
-    <h2>Новости</h2>
+    <NewsList />
   </div>
 }
 
