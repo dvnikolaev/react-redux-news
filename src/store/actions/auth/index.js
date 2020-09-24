@@ -14,27 +14,35 @@ export const onLogin = (username, password) => {
     return {
       type: LOGIN,
       isAuth: true,
-      username
+      user: {
+        id: foundedUser.id,
+        username,
+        isAdmin: foundedUser.isAdmin,
+      },
     };
   }
-  
-  store.dispatch(setErrorAuth('Неправильный логин или пароль'));
+
+  store.dispatch(setErrorAuth("Неправильный логин или пароль"));
 
   return {
-    type: ''
-  }
-
+    type: "",
+  };
 };
 
 export const onLogout = () => {
   return {
-    type: LOGOUT
-  }
-}
+    type: LOGOUT,
+    user: {
+      id: null,
+      username: '',
+      isAdmin: false
+    }
+  };
+};
 
-export const setErrorAuth = text => {
+export const setErrorAuth = (text) => {
   return {
     type: SET_ERROR_AUTH,
-    text
-  }
-}
+    text,
+  };
+};
