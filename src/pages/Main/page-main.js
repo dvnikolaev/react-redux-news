@@ -11,7 +11,7 @@ const Main = ({ username }) => {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.username,
+    username: state.auth.user.username,
   };
 };
 
