@@ -12,10 +12,7 @@ const NewsListIsAccept = ({ newsIsAccept, }) => {
       return (
         <NewsListItem
           key={news.id}
-          title={news.title}
-          description={news.description}
-          date={news.date}
-          isAccept={news.isAccept}
+          news={news}
         />
       );
     });

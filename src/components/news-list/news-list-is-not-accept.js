@@ -12,9 +12,7 @@ const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin }) => {
       <React.Fragment key={news.id}>
         <h2>Нерасмотренные новости</h2>
         <NewsListItem
-          title={news.title}
-          description={news.description}
-          date={news.date}
+          news={news}
         />
       </React.Fragment>
     );

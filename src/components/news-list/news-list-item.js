@@ -1,9 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 
-const NewsListItem = ({ isAdmin, isAccept, title, description, date }) => {
-  const renderNewsAction = () => {
-    if (!isAdmin || isAccept) {
+import NewsActions from "./news-actions";
+
+const NewsListItem = ({ news }) => {
+  /*const renderNewsAction = () => {
+    if (!isAdmin || news.isAccept) {
       return null;
     }
     return (
@@ -18,15 +19,15 @@ const NewsListItem = ({ isAdmin, isAccept, title, description, date }) => {
         </button>
       </div>
     );
-  };
+  };*/
   return (
     <article className="news-list__item">
       <div className="news-content">
-        <h3 className="news__title">{title}</h3>
-        <p className="news__description">{description}</p>
-        <span className="news__date">{date}</span>
+        <h3 className="news__title">{news.title}</h3>
+        <p className="news__description">{news.description}</p>
+        <span className="news__date">{news.date}</span>
       </div>
-      {renderNewsAction()}
+      {<NewsActions isAccept={news.isAccept} newsId={news.id} />}
     </article>
   );
 };
@@ -37,4 +38,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(NewsListItem);
+export default NewsListItem;
