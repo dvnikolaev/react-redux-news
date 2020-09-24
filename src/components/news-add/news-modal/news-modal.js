@@ -2,16 +2,26 @@ import React, { useState } from "react";
 
 import Modal from "../../Modal/Modal";
 import FormInput from "../../form-parts/form-input";
+import { addNews } from "../../../store/actions/news";
+import { connect } from "react-redux";
 
-const NewsModal = ({ setIsOpen }) => {
+const NewsModal = ({ setIsOpen, addNews }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+
+    if (title && description) {
+      addNews(title, description);
+      setIsOpen(false);
+    }
+  };
 
   return (
     <Modal setIsOpen={setIsOpen}>
       <h2 className="form__header">Добавление новости</h2>
-      <span>{title}</span>
-      <form className="form">
+      <form className="form" onSubmit={onSubmitForm}>
         <FormInput
           label="заголовок"
           value={title}
@@ -29,7 +39,7 @@ const NewsModal = ({ setIsOpen }) => {
         <button className="button form__button form__button-enter button--success">
           Добавить
         </button>
-        <button className="button form__button button--error" type="button">
+        <button className="button form__button button--error" type="button" onClick={() => setIsOpen(false)}>
           Отмена
         </button>
       </form>
@@ -37,4 +47,4 @@ const NewsModal = ({ setIsOpen }) => {
   );
 };
 
-export default NewsModal;
+export default connect(null, { addNews })(NewsModal);
