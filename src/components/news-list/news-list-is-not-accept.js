@@ -3,23 +3,24 @@ import { connect } from "react-redux";
 
 import NewsListItem from "./news-list-item";
 
-const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin }) => {
+const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin, isOwnNews }) => {
   const newsList = newsIsNotAccept.map((news) => {
     if (news.author_id !== userId && !isAdmin) {
       return null;
     }
     return (
-      <React.Fragment key={news.id}>
-        <h2>Нерасмотренные новости</h2>
-        <NewsListItem
-          news={news}
-        />
-      </React.Fragment>
+      <NewsListItem
+        key={news.id}
+        news={news}
+      />
     );
   });
 
+  const renderHeader = isOwnNews || (isAdmin && newsIsNotAccept.length) ? <h2>Нерасмотренные новости</h2> : null;
+
   return (
     <section>
+      {renderHeader}
       {newsList}
     </section>
   );
@@ -28,6 +29,7 @@ const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin }) => {
 const mapStateToProps = (state) => {
   return {
     newsIsNotAccept: state.news.news.filter((item) => !item.isAccept),
+    isOwnNews: state.news.news.some(item => item.author_id === state.auth.user.id),
     userId: state.auth.user.id,
     isAdmin: state.auth.user.isAdmin,
   };
