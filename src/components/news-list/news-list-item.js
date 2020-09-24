@@ -3,23 +3,6 @@ import React from "react";
 import NewsActions from "./news-actions";
 
 const NewsListItem = ({ news }) => {
-  /*const renderNewsAction = () => {
-    if (!isAdmin || news.isAccept) {
-      return null;
-    }
-    return (
-      <div className="news-actions">
-        <button 
-          className="button news-actions__button button--success">
-          Принять
-        </button>
-        <button 
-          className="button news-actions__button button--error">
-          Отклонить
-        </button>
-      </div>
-    );
-  };*/
   return (
     <article className="news-list__item">
       <div className="news-content">
@@ -30,12 +13,6 @@ const NewsListItem = ({ news }) => {
       {<NewsActions isAccept={news.isAccept} newsId={news.id} />}
     </article>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isAdmin: state.auth.user.isAdmin,
-  };
 };
 
 export default NewsListItem;
