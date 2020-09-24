@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Modal from "../../Modal/Modal";
+import FormInput from "../../form-parts/form-input";
 
 const NewsModal = ({ setIsOpen }) => {
   const [title, setTitle] = useState("");
@@ -9,27 +10,22 @@ const NewsModal = ({ setIsOpen }) => {
   return (
     <Modal setIsOpen={setIsOpen}>
       <h2 className="form__header">Добавление новости</h2>
+      <span>{title}</span>
       <form className="form">
-        <label className="form__label">
-          <span className="form__text">Заголовок:</span>
-          <input
-            name="title"
-            type="text"
-            className="form__input"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label className="form__label">
-          <span className="form__text">Описание:</span>
-          <input
-            className="form__input"
-            name="description"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
+        <FormInput
+          label="заголовок"
+          value={title}
+          setValue={setTitle}
+          type="text"
+          name="title"
+        />
+        <FormInput
+          label="описание"
+          value={description}
+          setValue={setDescription}
+          type="text"
+          name="description"
+        />
         <button className="button form__button form__button-enter button--success">
           Добавить
         </button>
