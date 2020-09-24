@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
+import './news-add.css';
 import NewsModal from './news-modal/news-modal';
 
-const NewsAdd = () => {
+const NewsAdd = ({isAuth}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const renderModal = isOpen ? <NewsModal setIsOpen={setIsOpen} /> : null;
 
+  if (!isAuth) {
+    return null;
+  }
+
   return <>
-    <button onClick={() => setIsOpen(true)}>Добавить запись</button>
+    <button className="button button--add-news" onClick={() => setIsOpen(true)}>Добавить запись</button>
     {renderModal}
   </>
 }
 
-export default NewsAdd;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+export default connect(mapStateToProps)(NewsAdd);
