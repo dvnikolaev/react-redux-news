@@ -1,4 +1,4 @@
-import { ADD_NEWS } from "../actions/news/types";
+import { ACCEPT_NEWS, ADD_NEWS } from "../actions/news/types";
 
 const INITIAL_STATE = {
   news: [
@@ -28,7 +28,7 @@ const INITIAL_STATE = {
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
       date: "2020-09-23",
       isAccept: false,
-    }
+    },
   ],
 };
 
@@ -36,6 +36,20 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_NEWS:
       return { ...state, news: [...state.news, action.news] };
+    case ACCEPT_NEWS: {
+      return {
+        ...state,
+        news: state.news.map((item, index) => {
+          if (index === action.id) {
+            return {
+              ...item,
+              isAccept: true,
+            };
+          }
+          return item;
+        }),
+      };
+    }
     default:
       return { ...state };
   }
