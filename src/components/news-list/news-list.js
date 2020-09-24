@@ -4,11 +4,11 @@ import "./news-list.css";
 import NewsListIsAccept from "./news-list-is-accept";
 import NewsListIsNotAccept from "./news-list-is-not-accept";
 
-const NewsList = () => {
+const NewsList = ({search}) => {
   return (
     <>
-      <NewsListIsNotAccept />
-      <NewsListIsAccept />
+      <NewsListIsNotAccept search={search}/>
+      <NewsListIsAccept search={search}/>
     </>
   );
 };

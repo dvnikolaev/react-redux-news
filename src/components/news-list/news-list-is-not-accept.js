@@ -3,20 +3,24 @@ import { connect } from "react-redux";
 
 import NewsListItem from "./news-list-item";
 
-const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin, isOwnNews }) => {
+const NewsListIsNotAccept = ({
+  newsIsNotAccept,
+  userId,
+  isAdmin,
+  isOwnNews,
+  search,
+}) => {
   const newsList = newsIsNotAccept.map((news) => {
     if (news.author_id !== userId && !isAdmin) {
       return null;
     }
-    return (
-      <NewsListItem
-        key={news.id}
-        news={news}
-      />
-    );
+    return <NewsListItem key={news.id} news={news} />;
   });
 
-  const renderHeader = isOwnNews || (isAdmin && newsIsNotAccept.length) ? <h2>Нерасмотренные новости</h2> : null;
+  const renderHeader =
+    isOwnNews || (isAdmin && newsIsNotAccept.length) ? (
+      <h2>Нерасмотренные новости</h2>
+    ) : null;
 
   return (
     <section>
@@ -26,10 +30,18 @@ const NewsListIsNotAccept = ({ newsIsNotAccept, userId, isAdmin, isOwnNews }) =>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    newsIsNotAccept: state.news.news.filter((item) => !item.isAccept),
-    isOwnNews: state.news.news.some(item => item.author_id === state.auth.user.id),
+    newsIsNotAccept: state.news.news.filter(
+      (item) =>
+        !item.isAccept &&
+        (item.title.toLowerCase().includes(ownProps.search) ||
+          item.description.toLowerCase().includes(ownProps.search) ||
+          item.date.includes(ownProps.search))
+    ),
+    isOwnNews: state.news.news.some(
+      (item) => item.author_id === state.auth.user.id
+    ),
     userId: state.auth.user.id,
     isAdmin: state.auth.user.isAdmin,
   };
