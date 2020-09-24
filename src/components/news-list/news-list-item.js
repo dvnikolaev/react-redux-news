@@ -8,8 +8,14 @@ const NewsListItem = ({ isAdmin, isAccept, title, description, date }) => {
     }
     return (
       <div className="news-actions">
-        <button>Принять</button>
-        <button>Отклонить</button>
+        <button 
+          className="button news-actions__button button--success">
+          Принять
+        </button>
+        <button 
+          className="button news-actions__button button--error">
+          Отклонить
+        </button>
       </div>
     );
   };

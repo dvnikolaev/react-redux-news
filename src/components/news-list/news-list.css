@@ -1,4 +1,6 @@
 .news-list__item {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   padding: 5px 10px 10px;
 }
@@ -10,4 +12,12 @@
 }
 .news__date {
   color: rgba(0,0,0,.3);
+}
+.news-actions {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+.news-actions__button:not(:first-of-type) {
+  margin-top: 10px;
 }
