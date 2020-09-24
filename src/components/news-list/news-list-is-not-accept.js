@@ -40,7 +40,7 @@ const mapStateToProps = (state, ownProps) => {
           item.date.includes(ownProps.search))
     ),
     isOwnNews: state.news.news.some(
-      (item) => item.author_id === state.auth.user.id
+      (item) => item.author_id === state.auth.user.id && !item.isAccept
     ),
     userId: state.auth.user.id,
     isAdmin: state.auth.user.isAdmin,
