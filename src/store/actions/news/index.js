@@ -1,4 +1,3 @@
-import { store } from '../../index';
 import { ACCEPT_NEWS, DECLINE_NEWS } from "./types"
 
 export const onAcceptNews = (newsId) => {
