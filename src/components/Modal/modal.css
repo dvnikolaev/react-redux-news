@@ -20,3 +20,9 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
+@media screen and (max-width: 410px) {
+  .modal-body {
+    min-width: 90%;
+  }
+}

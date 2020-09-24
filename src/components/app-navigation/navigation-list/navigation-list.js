@@ -7,15 +7,17 @@ const NavigationList = () => {
     {
       name: "Главная",
       link: "/",
+      icon: "fas fa-home"
     },
     {
       name: "Новости",
       link: "/news",
+      icon: "fas fa-newspaper"
     },
   ];
 
   const renderListItem = navListItem.map((item) => (
-    <NavigationListItem name={item.name} link={item.link} key={item.name}/>
+    <NavigationListItem name={item.name} link={item.link} icon={item.icon} key={item.name}/>
   ));
 
   return (

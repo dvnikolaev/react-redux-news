@@ -21,12 +21,12 @@ const Main = ({ username }) => {
   };
 
   return (
-    <div>
+    <main className="page__main">
       <h3>
         Привет, <span className="name">{name}!</span>
       </h3>
       {renderInfo()}
-    </div>
+    </main>
   );
 };
 

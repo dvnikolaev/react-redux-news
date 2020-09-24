@@ -32,3 +32,18 @@
 .button--error:active {
   background: #ff7e7e;
 }
+.icon__text {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .auth {
+    margin: 0 10px 0 20px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .icon__text {
+    display: none;
+  }
+}

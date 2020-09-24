@@ -24,6 +24,7 @@ const Auth = ({ isAuth, onLogout }) => {
     if (isAuth) {
       return (
         <button className="button button--error" onClick={logout}>
+          <i className="fas fa-sign-out-alt"></i>
           Выйти
         </button>
       );
@@ -33,7 +34,8 @@ const Auth = ({ isAuth, onLogout }) => {
         className="button button--success"
         onClick={() => setIsOpen(true)}
       >
-        Войти
+        <i className="fas fa-sign-in-alt"></i>
+        <span className="icon__text">Войти</span>
       </button>
     );
   };
